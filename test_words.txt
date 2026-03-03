@@ -1,0 +1,7 @@
+admin
+password
+qwerty
+john
+smith
+1990
+1999

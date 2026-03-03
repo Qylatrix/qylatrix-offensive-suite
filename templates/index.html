@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Cracking & Credential Attack Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #c9d1d9; }
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1f6feb 0%, #3fb950 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(63, 185, 80, 0.4);
+        }
+        /* SVG Icons defined here so no emojis are used */
+    </style>
+</head>
+<body class="min-h-screen p-8">
+    <div class="max-w-6xl mx-auto space-y-8">
+        
+        <header class="text-center py-10">
+            <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400 mb-4">
+                Password Cracking & Credential Attack Suite
+            </h1>
+            <p class="text-gray-400 text-lg">A professional toolkit for password policy testing and security assessment.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Dictionary Generator -->
+            <div class="glass-panel p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Dictionary Generator
+                </h2>
+                <div class="space-y-4">
+                    <input type="text" id="dict-words" placeholder="Enter base words (comma separated)" class="w-full bg-gray-800 border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <button onclick="generateDict()" class="w-full btn-primary text-white font-bold py-3 rounded-lg shadow-lg">Generate Wordlist</button>
+                    <div id="dict-result" class="hidden mt-4 p-4 bg-gray-900 rounded-lg text-sm font-mono text-green-400 border border-gray-700"></div>
+                </div>
+            </div>
+
+            <!-- Strength Analyzer -->
+            <div class="glass-panel p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    Strength Analyzer
+                </h2>
+                <div class="space-y-4">
+                    <input type="password" id="analyze-pwd" placeholder="Enter password to analyze" class="w-full bg-gray-800 border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <button onclick="analyzePwd()" class="w-full btn-primary text-white font-bold py-3 rounded-lg shadow-lg">Analyze Security</button>
+                    <div id="analyze-result" class="hidden mt-4 space-y-2 p-4 bg-gray-900 rounded-lg text-sm border border-gray-700"></div>
+                </div>
+            </div>
+
+            <!-- Brute Force Simulator -->
+            <div class="glass-panel p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Brute-Force Estimates
+                </h2>
+                <div class="space-y-4">
+                    <input type="text" id="brute-pwd" placeholder="Sample password for estimation" class="w-full bg-gray-800 border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <button onclick="simulateBruteForce()" class="w-full btn-primary text-white font-bold py-3 rounded-lg shadow-lg">Estimate Crack Time</button>
+                    <div id="brute-result" class="hidden mt-4 p-4 bg-gray-900 rounded-lg text-sm text-yellow-400 font-mono border border-gray-700"></div>
+                </div>
+            </div>
+
+            <!-- Hash Extractor Sim -->
+            <div class="glass-panel p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                    Hash Extraction Demo
+                </h2>
+                <div class="space-y-4">
+                    <select id="os-type" class="w-full bg-gray-800 border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                        <option value="linux">Linux (/etc/shadow)</option>
+                        <option value="windows">Windows (SAM Dump)</option>
+                    </select>
+                    <button onclick="extractHashes()" class="w-full btn-primary text-white font-bold py-3 rounded-lg shadow-lg">Extract offline</button>
+                    <div id="extract-result" class="hidden mt-4 p-4 bg-gray-900 rounded-lg text-xs font-mono text-gray-300 border border-gray-700 overflow-x-auto whitespace-pre"></div>
+                </div>
+            </div>
+            
+            <!-- Report Generator -->
+            <div class="glass-panel p-6 md:col-span-2">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Audit Report Generator
+                </h2>
+                <div class="space-y-4">
+                    <textarea id="report-pwds" rows="3" placeholder="Enter passwords to audit (one per line)" class="w-full bg-gray-800 border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 outline-none font-mono"></textarea>
+                    <button onclick="generateReport()" class="w-full btn-primary text-white font-bold py-3 rounded-lg shadow-lg">Generate Full Security Report</button>
+                    <div id="report-result" class="hidden mt-4 p-6 bg-gray-900 rounded-lg text-sm text-gray-300 border border-gray-700 prose prose-invert max-w-none"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        async function fetchAPI(endpoint, payload) {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            return res.json();
+        }
+
+        async function generateDict() {
+            const words = document.getElementById('dict-words').value.split(',').map(w => w.trim()).filter(Boolean);
+            if(words.length === 0) return;
+            const res = await fetchAPI('/api/generate_dict', {words});
+            const div = document.getElementById('dict-result');
+            div.textContent = `Generated ${res.count} permutations successfully. Saved to ${res.file}`;
+            div.classList.remove('hidden');
+        }
+
+        async function analyzePwd() {
+            const password = document.getElementById('analyze-pwd').value;
+            if(!password) return;
+            const data = await fetchAPI('/api/analyze', {password});
+            const div = document.getElementById('analyze-result');
+            let recs = data.recommendations.map(r => `<li>${r}</li>`).join('');
+            div.innerHTML = `
+                <div class="flex justify-between border-b border-gray-700 pb-2">
+                    <span class="text-gray-400">Score:</span>
+                    <span class="${data.result.score > 2 ? 'text-green-400' : 'text-red-400'} font-bold">${data.result.score} / 4</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-700 py-2">
+                    <span class="text-gray-400">Entropy:</span>
+                    <span class="text-white">${data.result.math_entropy_bits.toFixed(1)} bits</span>
+                </div>
+                <div class="flex justify-between py-2">
+                    <span class="text-gray-400">Est. Crack Time:</span>
+                    <span class="text-white">${data.result.crack_times_display.offline_fast_hashing_1e10_per_second || 'Unknown'}</span>
+                </div>
+                ${recs ? `<div class="mt-2 text-yellow-400"><ul class="list-disc pl-5">${recs}</ul></div>` : ''}
+            `;
+            div.classList.remove('hidden');
+        }
+
+        async function simulateBruteForce() {
+            const password = document.getElementById('brute-pwd').value;
+            if(!password) return;
+            const data = await fetchAPI('/api/brute_force', {password, hash_type: 'ntlm'});
+            const div = document.getElementById('brute-result');
+            div.innerHTML = `Combinations: ${data.combinations.toLocaleString()}<br>Hash Rate: ${data.assumed_hash_rate.toLocaleString()} H/s<br><br>Estimated Time to crack:<br><span class="text-red-400 text-lg">${data.formatted_time}</span>`;
+            div.classList.remove('hidden');
+        }
+
+        async function extractHashes() {
+            const os_type = document.getElementById('os-type').value;
+            const data = await fetchAPI('/api/extract', {os_type});
+            const div = document.getElementById('extract-result');
+            div.textContent = `[+] Mock Extraction Completed.\n\n` + JSON.stringify(data.accounts, null, 2);
+            div.classList.remove('hidden');
+        }
+
+        async function generateReport() {
+            const lines = document.getElementById('report-pwds').value.split('\n').map(w => w.trim()).filter(Boolean);
+            if(lines.length === 0) return;
+            const data = await fetchAPI('/api/report', {passwords: lines});
+            const div = document.getElementById('report-result');
+            
+            // Simple markdown parser for demo display
+            let html = data.markdown
+                .replace(/^# (.*)/gm, '<h1 class="text-2xl font-bold mb-4">$1</h1>')
+                .replace(/^## (.*)/gm, '<h2 class="text-xl font-semibold mt-6 mb-2 text-white">$1</h2>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`(.*?)`/g, '<code class="bg-gray-800 text-green-400 px-1 rounded">$1</code>')
+                .replace(/\n\n/g, '<br><br>')
+                .replace(/^- (.*)/gm, '<li class="ml-4">$1</li>');
+
+            div.innerHTML = html;
+            div.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
