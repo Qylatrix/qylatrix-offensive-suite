@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qylatrix Offensive Security Suite</title>
+    <title>Qylatrix | The Syntax of Safety</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --qylatrix-black: #050505;
-            --qylatrix-dark: #0a0a0a;
-            --qylatrix-red: #ea0029;
-            --qylatrix-red-glow: rgba(234, 0, 41, 0.4);
+            --qylatrix-black: #030712;
+            --qylatrix-dark: #0f172a;
+            --qylatrix-primary: #0077ff;
+            --qylatrix-primary-glow: rgba(0, 119, 255, 0.4);
             --qylatrix-cyan: #00f0ff;
         }
 
@@ -23,7 +23,7 @@
             background-color: var(--qylatrix-black);
             color: #e0e0e0;
             background-image:
-                radial-gradient(circle at 15% 50%, rgba(234, 0, 41, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 15% 50%, rgba(0, 119, 255, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
             min-height: 100vh;
             overflow-x: hidden;
@@ -34,7 +34,7 @@
         }
 
         .glass-panel {
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 4px;
@@ -50,13 +50,13 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, transparent, var(--qylatrix-red), transparent);
+            background: linear-gradient(90deg, transparent, var(--qylatrix-cyan), transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .glass-panel:hover {
-            border-color: rgba(234, 0, 41, 0.2);
+            border-color: rgba(0, 240, 255, 0.2);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transform: translateY(-2px);
         }
@@ -67,7 +67,7 @@
 
         .btn-qylatrix {
             background: transparent;
-            border: 1px solid var(--qylatrix-red);
+            border: 1px solid var(--qylatrix-primary);
             color: white;
             position: relative;
             overflow: hidden;
@@ -84,14 +84,15 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(234, 0, 41, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
             transition: all 0.4s ease;
         }
 
         .btn-qylatrix:hover {
-            background: rgba(234, 0, 41, 0.1);
-            box-shadow: 0 0 15px var(--qylatrix-red-glow);
+            background: rgba(0, 119, 255, 0.1);
+            box-shadow: 0 0 15px var(--qylatrix-primary-glow);
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            border-color: var(--qylatrix-cyan);
         }
 
         .btn-qylatrix:hover::after {
@@ -102,7 +103,7 @@
         select,
         textarea {
             background: rgba(0, 0, 0, 0.5) !important;
-            border: 1px solid #222 !important;
+            border: 1px solid #1e293b !important;
             color: #fff !important;
             transition: all 0.3s ease !important;
             font-family: 'JetBrains Mono', monospace;
@@ -112,8 +113,8 @@
         input:focus,
         select:focus,
         textarea:focus {
-            border-color: var(--qylatrix-red) !important;
-            box-shadow: 0 0 10px rgba(234, 0, 41, 0.2) !important;
+            border-color: var(--qylatrix-cyan) !important;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2) !important;
             outline: none !important;
         }
 
@@ -134,14 +135,14 @@
 
         .glitch-text::before {
             left: 2px;
-            text-shadow: -1px 0 red;
+            text-shadow: -1px 0 var(--qylatrix-cyan);
             clip: rect(44px, 450px, 56px, 0);
             animation: glitch-anim 5s infinite linear alternate-reverse;
         }
 
         .glitch-text::after {
             left: -2px;
-            text-shadow: -1px 0 blue;
+            text-shadow: -1px 0 var(--qylatrix-primary);
             clip: rect(44px, 450px, 56px, 0);
             animation: glitch-anim2 5s infinite linear alternate-reverse;
         }
@@ -200,8 +201,8 @@
 
         /* Terminal Output Style */
         .terminal-output {
-            background: #000;
-            border-left: 2px solid var(--qylatrix-red);
+            background: #020617;
+            border-left: 2px solid var(--qylatrix-cyan);
             font-family: 'JetBrains Mono', monospace;
             padding: 1rem;
             position: relative;
@@ -222,22 +223,47 @@
     <div class="max-w-7xl mx-auto space-y-12">
 
         <!-- Navbar / Header -->
-        <header class="flex flex-col md:flex-row justify-between items-center py-6 border-b border-gray-800">
-            <div class="flex items-center space-x-3">
-                <!-- Abstract Q Logo -->
-                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M50 10C27.9086 10 10 27.9086 10 50C10 72.0914 27.9086 90 50 90C72.0914 90 90 72.0914 90 50C90 27.9086 72.0914 10 50 10ZM50 82C32.3269 82 18 67.6731 18 50C18 32.3269 32.3269 18 50 18C67.6731 18 82 32.3269 82 50C82 67.6731 67.6731 82 50 82Z"
-                        fill="#ea0029" />
-                    <path d="M75 75L95 95" stroke="#ea0029" stroke-width="8" stroke-linecap="square" />
-                    <rect x="40" y="40" width="20" height="20" fill="#ea0029" />
+        <header class="flex flex-col md:flex-row justify-between items-center py-6 border-b border-slate-800">
+            <div class="flex items-center space-x-4">
+                <!-- Authentic Qylatrix Logo -->
+                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00f0ff" />
+                            <stop offset="100%" stop-color="#0055ff" />
+                        </linearGradient>
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Hexagon Border -->
+                    <path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" stroke="url(#blueGrad)"
+                        stroke-width="4" fill="none" />
+                    <!-- Magnifying Glass / Q logic -->
+                    <circle cx="45" cy="45" r="16" stroke="#ffffff" stroke-width="5" fill="none" />
+                    <circle cx="45" cy="45" r="4" fill="#00f0ff" filter="url(#glow)" />
+                    <path d="M56 56 L75 75" stroke="#0055ff" stroke-width="8" stroke-linecap="square" />
+                    <path d="M62 62 L82 82" stroke="#00f0ff" stroke-width="3" stroke-linecap="square" />
+                    <path d="M72 82 L77 82 L77 77" stroke="#00f0ff" stroke-width="2" fill="none" />
+                    <path d="M65 75 L70 75 L70 70" stroke="#0088ff" stroke-width="2" fill="none" />
                 </svg>
-                <h1 class="text-3xl font-bold tracking-wider uppercase text-white" style="letter-spacing: 2px;">
-                    Qylatrix
-                </h1>
+                <div class="flex flex-col">
+                    <h1 class="text-3xl font-extrabold tracking-widest uppercase text-white"
+                        style="letter-spacing: 3px;">
+                        Qylatrix
+                    </h1>
+                    <span class="text-xs font-mono text-[#00f0ff] uppercase tracking-widest"
+                        style="letter-spacing: 2px;">
+                        The Syntax of Safety
+                    </span>
+                </div>
             </div>
-            <div class="text-xs font-mono text-gray-500 tracking-widest uppercase mt-4 md:mt-0">
-                Offensive Security Suite v2.0 // INTERNAL USE ONLY
+            <div class="text-xs font-mono text-slate-500 tracking-widest uppercase mt-4 md:mt-0">
+                Offensive Security Suite v2.0
             </div>
         </header>
 
@@ -247,7 +273,9 @@
             <div class="glass-panel p-8">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold uppercase tracking-wider text-white">Dictionary Forge</h2>
-                    <span class="text-xs font-mono text-[#ea0029] border border-[#ea0029] px-2 py-1">MODULE 01</span>
+                    <span
+                        class="text-xs font-mono text-[#00f0ff] border border-[#00f0ff] px-2 py-1 bg-[#00f0ff]/10">MODULE
+                        01</span>
                 </div>
                 <div class="space-y-5">
                     <input type="text" id="dict-words" placeholder="Target basis (comma separated)"
@@ -261,7 +289,9 @@
             <div class="glass-panel p-8">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold uppercase tracking-wider text-white">Entropy Analyzer</h2>
-                    <span class="text-xs font-mono text-[#ea0029] border border-[#ea0029] px-2 py-1">MODULE 02</span>
+                    <span
+                        class="text-xs font-mono text-[#00f0ff] border border-[#00f0ff] px-2 py-1 bg-[#00f0ff]/10">MODULE
+                        02</span>
                 </div>
                 <div class="space-y-5">
                     <input type="password" id="analyze-pwd" placeholder="Input string for entropy evaluation"
@@ -275,13 +305,15 @@
             <div class="glass-panel p-8">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold uppercase tracking-wider text-white">Brute-Force Matrices</h2>
-                    <span class="text-xs font-mono text-[#ea0029] border border-[#ea0029] px-2 py-1">MODULE 03</span>
+                    <span
+                        class="text-xs font-mono text-[#00f0ff] border border-[#00f0ff] px-2 py-1 bg-[#00f0ff]/10">MODULE
+                        03</span>
                 </div>
                 <div class="space-y-5">
                     <input type="text" id="brute-pwd" placeholder="Hypothetical password structure"
                         class="w-full rounded p-3 text-white">
                     <button onclick="simulateBruteForce()" class="w-full btn-qylatrix py-3 rounded">Compute TTK</button>
-                    <div id="brute-result" class="hidden mt-4 terminal-output text-sm text-yellow-500"></div>
+                    <div id="brute-result" class="hidden mt-4 terminal-output text-sm text-[#e2e8f0]"></div>
                 </div>
             </div>
 
@@ -289,7 +321,9 @@
             <div class="glass-panel p-8">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold uppercase tracking-wider text-white">Hive Extraction</h2>
-                    <span class="text-xs font-mono text-[#ea0029] border border-[#ea0029] px-2 py-1">MODULE 04</span>
+                    <span
+                        class="text-xs font-mono text-[#00f0ff] border border-[#00f0ff] px-2 py-1 bg-[#00f0ff]/10">MODULE
+                        04</span>
                 </div>
                 <div class="space-y-5">
                     <select id="os-type" class="w-full rounded p-3 text-white">
@@ -299,33 +333,34 @@
                     <button onclick="extractHashes()" class="w-full btn-qylatrix py-3 rounded">Initiate
                         Extraction</button>
                     <div id="extract-result"
-                        class="hidden mt-4 terminal-output text-xs text-gray-400 overflow-x-auto whitespace-pre"></div>
+                        class="hidden mt-4 terminal-output text-xs text-slate-400 overflow-x-auto whitespace-pre"></div>
                 </div>
             </div>
 
             <!-- Report Generator -->
-            <div class="glass-panel p-8 lg:col-span-2 border-t-4 border-t-[#ea0029]">
+            <div class="glass-panel p-8 lg:col-span-2 border-t-4 border-t-[#0077ff]">
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Qylatrix Audit Report Generation
-                    </h2>
-                    <span class="text-xs font-mono text-[#ea0029] border border-[#ea0029] px-2 py-1">FINAL PHASE</span>
+                    <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Audit Report Generation</h2>
+                    <span
+                        class="text-xs font-mono text-[#00f0ff] border border-[#00f0ff] px-2 py-1 bg-[#00f0ff]/10">FINAL
+                        PHASE</span>
                 </div>
                 <div class="space-y-5">
                     <textarea id="report-pwds" rows="4" placeholder="Input target payload strings (line separated)..."
                         class="w-full rounded p-3 text-white"></textarea>
                     <button onclick="generateReport()"
-                        class="w-full bg-[#ea0029] hover:bg-red-700 text-white font-bold py-4 rounded transition-colors uppercase tracking-widest">Generate
+                        class="w-full bg-[#0077ff] hover:bg-[#0055ff] border border-[#00f0ff] text-white font-bold py-4 rounded transition-colors uppercase tracking-widest shadow-[0_0_15px_rgba(0,119,255,0.4)]">Generate
                         Executive Brief</button>
                     <div id="report-result"
-                        class="hidden mt-6 p-8 bg-[#050505] rounded text-sm text-gray-300 border border-gray-800 prose prose-invert max-w-none font-mono">
+                        class="hidden mt-6 p-8 bg-[#020617] rounded text-sm text-slate-300 border border-slate-800 prose prose-invert max-w-none font-mono">
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <footer class="text-center py-8 text-xs font-mono text-gray-600 uppercase border-t border-gray-900">
-            &copy; 2026 Qylatrix Industries. Authorized personnel only. All access logged.
+        <footer class="text-center py-8 text-xs font-mono text-slate-600 uppercase border-t border-slate-800">
+            &copy; 2026 Qylatrix Industries. The Syntax of Safety.
         </footer>
     </div>
 
@@ -356,22 +391,23 @@
             const div = document.getElementById('analyze-result');
             let recs = data.recommendations.map(r => `<li>[-] ${r}</li>`).join('');
 
-            let color = data.result.score > 2 ? 'text-[#00f0ff]' : 'text-[#ea0029]';
+            // Re-map colors to cyan/blue
+            let color = data.result.score > 2 ? 'text-[#00f0ff]' : 'text-[#ff4444]'; // Kept red only for actual danger indication, else cyan
 
             div.innerHTML = `
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-500">THREAT SCORE:</span>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-slate-500">THREAT SCORE:</span>
                     <span class="${color} font-bold">[ ${data.result.score} / 4 ]</span>
                 </div>
-                <div class="flex justify-between border-b border-gray-800 py-2">
-                    <span class="text-gray-500">ENTROPY VALUE:</span>
+                <div class="flex justify-between border-b border-slate-800 py-2">
+                    <span class="text-slate-500">ENTROPY VALUE:</span>
                     <span class="text-white">${data.result.math_entropy_bits.toFixed(1)} bits</span>
                 </div>
                 <div class="flex justify-between py-2">
-                    <span class="text-gray-500">EST. COMPROMISE TIME:</span>
+                    <span class="text-slate-500">EST. COMPROMISE TIME:</span>
                     <span class="text-white">${data.result.crack_times_display.offline_fast_hashing_1e10_per_second || 'Unknown'}</span>
                 </div>
-                ${recs ? `<div class="mt-4 text-gray-400 border-t border-gray-800 pt-2 font-mono text-xs">VULNERABILITY PATCH NOTES:<ul class="mt-2 space-y-1">${recs}</ul></div>` : ''}
+                ${recs ? `<div class="mt-4 text-slate-400 border-t border-slate-800 pt-2 font-mono text-xs">VULNERABILITY PATCH NOTES:<ul class="mt-2 space-y-1">${recs}</ul></div>` : ''}
             `;
             div.classList.remove('hidden');
         }
@@ -381,7 +417,7 @@
             if (!password) return;
             const data = await fetchAPI('/api/brute_force', { password, hash_type: 'ntlm' });
             const div = document.getElementById('brute-result');
-            div.innerHTML = `> Matrix size: ${data.combinations.toLocaleString()}<br>> Hardware acceleration: ${data.assumed_hash_rate.toLocaleString()} H/s (ASIC Array)<br>> TIME-TO-CRACK (TTC): <span class="text-[#ea0029] font-bold text-lg">${data.formatted_time}</span>`;
+            div.innerHTML = `> Matrix size: ${data.combinations.toLocaleString()}<br>> Hardware acceleration: ${data.assumed_hash_rate.toLocaleString()} H/s (ASIC Array)<br>> TIME-TO-CRACK (TTC): <span class="text-[#00f0ff] font-bold text-lg">${data.formatted_time}</span>`;
             div.classList.remove('hidden');
         }
 
@@ -400,15 +436,15 @@
             const div = document.getElementById('report-result');
 
             let html = data.markdown
-                .replace(/^# (.*)/gm, '<h1 class="text-2xl font-bold mb-6 text-white uppercase border-b border-[#ea0029] pb-2">$1</h1>')
-                .replace(/^## (.*)/gm, '<h2 class="text-lg font-bold mt-8 mb-4 text-[#ea0029] uppercase tracking-widest">$1</h2>')
+                .replace(/^# (.*)/gm, '<h1 class="text-2xl font-bold mb-6 text-white uppercase border-b border-[#00f0ff] pb-2">$1</h1>')
+                .replace(/^## (.*)/gm, '<h2 class="text-lg font-bold mt-8 mb-4 text-[#0077ff] uppercase tracking-widest">$1</h2>')
                 .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
-                .replace(/`(.*?)`/g, '<code class="bg-gray-900 border border-gray-800 text-[#00f0ff] px-1 rounded">$1</code>')
+                .replace(/`(.*?)`/g, '<code class="bg-slate-900 border border-slate-800 text-[#00f0ff] px-1 rounded">$1</code>')
                 .replace(/\n\n/g, '<br><br>')
-                .replace(/^- (.*)/gm, '<li class="ml-4 text-gray-400 mb-1">$1</li>')
+                .replace(/^- (.*)/gm, '<li class="ml-4 text-slate-400 mb-1">$1</li>')
                 .replace(/\|(.*)\|/g, function (match) {
                     // Simple table formatting
-                    return `<div class="py-1 border-b border-gray-800 text-xs">${match.replace(/\|/g, '<span class="mx-2 text-gray-700">|</span>')}</div>`;
+                    return `<div class="py-1 border-b border-slate-800 text-xs">${match.replace(/\|/g, '<span class="mx-2 text-slate-700">|</span>')}</div>`;
                 });
 
             div.innerHTML = html;

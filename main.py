@@ -15,10 +15,10 @@ console = Console()
 
 def display_banner():
     banner_text = """
-    [bold magenta]QYLATRIX OFFENSIVE SECURITY SUITE[/bold magenta]
-    [cyan]Advanced toolkit for password policy testing and security assessment.[/cyan]
+    [bold cyan]QYLATRIX OFFENSIVE SECURITY SUITE[/bold cyan]
+    [blue]Advanced toolkit for password policy testing and security assessment.[/blue]
     """
-    console.print(Panel.fit(banner_text, border_style="magenta"))
+    console.print(Panel.fit(banner_text, border_style="cyan"))
 
 def interactive_menu():
     dict_gen = DictionaryGenerator()
@@ -28,7 +28,7 @@ def interactive_menu():
     reporter = ReportGenerator()
     
     while True:
-        console.print("\n[bold magenta]--- Qylatrix Main Menu ---[/bold magenta]")
+        console.print("\n[bold cyan]--- Qylatrix Main Menu ---[/bold cyan]")
         console.print("1. Dictionary Generator")
         console.print("2. Password Strength Analyzer")
         console.print("3. Brute-Force Simulator")
