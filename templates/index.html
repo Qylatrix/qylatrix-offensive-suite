@@ -228,38 +228,57 @@
                 <!-- Authentic Qylatrix Logo -->
                 <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" stop-color="#00f0ff" />
                             <stop offset="100%" stop-color="#0055ff" />
                         </linearGradient>
-                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                        <filter id="glowHex" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <filter id="glowCenter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                             <feMerge>
                                 <feMergeNode in="coloredBlur" />
                                 <feMergeNode in="SourceGraphic" />
                             </feMerge>
                         </filter>
                     </defs>
-                    <!-- Hexagon Border -->
-                    <path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" stroke="url(#blueGrad)"
-                        stroke-width="4" fill="none" />
-                    <!-- Magnifying Glass / Q logic -->
-                    <circle cx="45" cy="45" r="16" stroke="#ffffff" stroke-width="5" fill="none" />
-                    <circle cx="45" cy="45" r="4" fill="#00f0ff" filter="url(#glow)" />
-                    <path d="M56 56 L75 75" stroke="#0055ff" stroke-width="8" stroke-linecap="square" />
-                    <path d="M62 62 L82 82" stroke="#00f0ff" stroke-width="3" stroke-linecap="square" />
-                    <path d="M72 82 L77 82 L77 77" stroke="#00f0ff" stroke-width="2" fill="none" />
-                    <path d="M65 75 L70 75 L70 70" stroke="#0088ff" stroke-width="2" fill="none" />
+
+                    <!-- Broken Hexagon Border -->
+                    <path d="M50 5 L90 27.5 L90 55 M75 80 L50 95 L10 72.5 L10 27.5 Z" stroke="url(#blueGrad)"
+                        stroke-width="4" stroke-linejoin="round" fill="none" filter="url(#glowHex)" />
+
+                    <!-- Magnifying Glass -->
+                    <circle cx="45" cy="45" r="17" stroke="#ffffff" stroke-width="5" fill="none" />
+                    <!-- Center Glow Point -->
+                    <circle cx="45" cy="45" r="4.5" fill="#00f0ff" filter="url(#glowCenter)" />
+
+                    <!-- Magnifying Handle & Traces -->
+                    <path d="M57 57 L72 72" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+                    <path d="M62 62 L85 85" stroke="#0055ff" stroke-width="4" stroke-linecap="square" />
+                    <path d="M68 60 L88 80" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="square" />
+
+                    <!-- PCB trace lines at the end -->
+                    <path d="M72 75 L72 80 L67 80" stroke="#00f0ff" stroke-width="2" fill="none" />
+                    <path d="M78 81 L78 86 L73 86" stroke="#0055ff" stroke-width="2" fill="none" />
                 </svg>
-                <div class="flex flex-col">
+                <div class="flex flex-col ml-3">
                     <h1 class="text-3xl font-extrabold tracking-widest uppercase text-white"
-                        style="letter-spacing: 3px;">
-                        Qylatrix
+                        style="text-shadow: 0 0 10px rgba(255,255,255,0.3);">
+                        QYLATRIX
                     </h1>
-                    <span class="text-xs font-mono text-[#00f0ff] uppercase tracking-widest"
-                        style="letter-spacing: 2px;">
-                        The Syntax of Safety
-                    </span>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <div class="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#00f0ff]"></div>
+                        <span
+                            class="text-[0.65rem] font-bold text-[#00f0ff] uppercase tracking-[0.2em] whitespace-nowrap">
+                            The Syntax of Safety
+                        </span>
+                        <div class="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#00f0ff]"></div>
+                    </div>
                 </div>
             </div>
             <div class="text-xs font-mono text-slate-500 tracking-widest uppercase mt-4 md:mt-0">
