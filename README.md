@@ -16,14 +16,14 @@
 
 ### One-line install
 ```bash
-curl -sSL https://raw.githubusercontent.com/Qylatrix/qylatrix-offensive-suite/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Qylatrix/Qylxforce/main/install.sh | sudo bash
 ```
 That's it. After install the **browser opens the live site automatically.**
 
 ### Manual install
 ```bash
-git clone https://github.com/Qylatrix/qylatrix-offensive-suite.git
-cd qylatrix-offensive-suite
+git clone https://github.com/Qylatrix/Qylxforce.git
+cd Qylxforce
 sudo bash install.sh
 ```
 

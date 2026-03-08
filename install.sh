@@ -9,7 +9,7 @@ set -e
 
 # ── Configuration ─────────────────────────────────────────────────
 TOOL_NAME="qylxforce"
-REPO="https://github.com/Qylatrix/qylatrix-offensive-suite"
+REPO="https://github.com/Qylatrix/Qylxforce"
 LIVE_URL="https://qylxforce.pythonanywhere.com"   # live site
 INSTALL_DIR="/opt/$TOOL_NAME"
 BIN_LINK="/usr/local/bin/$TOOL_NAME"
@@ -37,7 +37,7 @@ echo -e "${NC}"
 echo -e "  ${DIM}┌────────────────────────────────────────────────────────────┐${NC}"
 echo -e "  ${DIM}│${NC}  ${BCYAN}qylxforce${NC} ${DIM}—${NC} Offensive Credential Suite ${DIM}v2.0${NC}             ${DIM}│${NC}"
 echo -e "  ${DIM}│${NC}  ${WHITE}The Syntax of Safety${NC}  ${DIM}|${NC}  ${BLUE}by Qylatrix Industries${NC}           ${DIM}│${NC}"
-echo -e "  ${DIM}│${NC}  ${DIM}github.com/Qylatrix/qylatrix-offensive-suite${NC}             ${DIM}│${NC}"
+echo -e "  ${DIM}│${NC}  ${DIM}github.com/Qylatrix/Qylxforce${NC}                            ${DIM}│${NC}"
 echo -e "  ${DIM}└────────────────────────────────────────────────────────────┘${NC}"
 echo ""
 
@@ -130,7 +130,7 @@ case "\$1" in
         echo "    \${CYAN}extract\${NC}    Hash extractor (shadow / SAM)"
         echo "    \${CYAN}report\${NC}     Executive audit report"
         echo ""
-        echo "  \${DIM}by Qylatrix Industries  |  github.com/Qylatrix/qylatrix-offensive-suite\${NC}"
+        echo "  \${DIM}by Qylatrix Industries  |  github.com/Qylatrix/Qylxforce\${NC}"
         echo ""
         ;;
 esac
