@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="static/qylxforce_logo.png" height="80"/>
+<img src="static/logo.png" height="80"/>
 
 # QYLXFORCE
 ### Offensive Credential Suite
